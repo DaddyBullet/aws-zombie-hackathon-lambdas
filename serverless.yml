@@ -66,6 +66,48 @@ functions:
           # authorizer:
           #   arn: arn:aws:cognito-idp:eu-central-1:650194926406:userpool/eu-central-1_0zIfyLNBa
 
+  contactsGet:
+    handler: handler
+    events:
+      -http:
+          path: contacts
+          method: get
+          cors: true
+
+  contactsPut:
+    handler: handler
+    events:
+      - http:
+          path: contacts/{newContactId}
+          method: put
+          cors: true
+
+  contactsDelete:
+    handler: handler
+    events:
+      - http:
+          path: contacts/{contactId}
+          method: delete
+          cors: true
+
+  chatGetMessages:
+    handler: handler
+    events:
+      - http:
+          path: caht/{chatId}/messages[?offset={lastLoadedMessageId}]
+          method: get
+          cors: true
+
+  contactsGetById:
+    handler: handler
+    events:
+      - http:
+          path: contacts/{userId}/chatId
+          method: get
+          cors: true
+
+
+
   # postSignup:
   #   handler: controllerPostSignup.main
   #   events:
